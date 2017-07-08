@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+    android:id="@+id/menu_top">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home"
+        android:title="الرئيسية"/>
+    <item
+        android:id="@+id/nav_monitor"
+        android:icon="@drawable/monitor"
+        android:title="مراقبة" />
+    <item
+        android:id="@+id/nav_reports"
+        android:icon="@drawable/reports"
+        android:title="التقارير" />
+    <item
+        android:id="@+id/nav_farmProfile"
+        android:icon="@drawable/farm"
+        android:title="بيانات المزرعة" />
+    <item
+        android:id="@+id/nav_userProfile"
+        android:icon="@drawable/user"
+        android:title="بيانات المستخدم" />
+</group>
+
+<group
+android:checkableBehavior="single"
+android:id="@+id/menu_bottom">
+<item
+    android:id="@+id/nav_settings"
+    android:icon="@drawable/settings"
+    android:title="الإعدادات"/>
+<item
+    android:id="@+id/nav_help"
+    android:icon="@drawable/help"
+    android:title="الإرشادات"/>
+<item
+    android:id="@+id/nav_contactUS"
+    android:icon="@drawable/contact"
+    android:title="اتصل بنا"/>
+
+</group>
+
+</menu>
