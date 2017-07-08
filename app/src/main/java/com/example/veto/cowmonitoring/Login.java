@@ -39,12 +39,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         SharedPreferences prefs = this.getSharedPreferences("Login session", MODE_PRIVATE);
         String user = prefs.getString("Current User",null);
 
-
-
         if(user != null)
         {
             Intent intent = new Intent(getApplicationContext() , Home.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -127,6 +126,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             createUserSession(currentUser);
 
             Intent intent = new Intent(getApplicationContext(), Home.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
         }
     }

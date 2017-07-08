@@ -17,6 +17,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import layout.HomeFragment;
+
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,15 +28,13 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        HomeFragment homeFragment = new HomeFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.homeLayout,
+                homeFragment ,
+                homeFragment.getTag())
+                .commit();
         getSupportActionBar().setTitle("الرئيسية");
-
-        SharedPreferences prefs = this.getSharedPreferences("Login session", MODE_PRIVATE);
-        String user = prefs.getString("Current User","");
-
-        if (user!=null)
-        Log.d("current user",user);
-        else
-            Log.d("current user" , "mfesh");
 
 
 
@@ -81,6 +81,18 @@ public class Home extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_logout)
+        {
+            SharedPreferences sharedPreferences = getSharedPreferences("Login session" , MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+            editor.clear();
+            editor.commit();
+
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+            finish();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -93,6 +105,13 @@ public class Home extends AppCompatActivity
 
         if (id == R.id.nav_home)
         {
+            HomeFragment homeFragment = new HomeFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.homeLayout,
+                    homeFragment ,
+                    homeFragment.getTag())
+                    .commit();
+            getSupportActionBar().setTitle("الرئيسية");
 
         }
         else if (id == R.id.nav_monitor)
@@ -100,11 +119,7 @@ public class Home extends AppCompatActivity
 
 
         }
-        else if (id == R.id.nav_reports)
-        {
 
-
-        }
         else if (id == R.id.nav_farmProfile)
         {
             FarmProfileFragement farmProfileFragement = new FarmProfileFragement();
@@ -135,11 +150,7 @@ public class Home extends AppCompatActivity
 
 
         }
-        else if (id == R.id.nav_help)
-        {
-
-
-        } else if (id == R.id.nav_contactUS)
+        else if (id == R.id.nav_contactUS)
         {
 
         }
