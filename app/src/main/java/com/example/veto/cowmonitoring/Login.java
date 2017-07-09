@@ -88,7 +88,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
 
 
-        String url = "http://192.168.1.4:8088/CowMonitorAPI/rest/WebService/checkLogin?email="+
+        String url = "checkLogin?email="+
                 email+"&password="+password ;
         HttpGet httpGet = new HttpGet();
 

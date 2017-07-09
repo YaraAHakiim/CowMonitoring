@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.util.concurrent.ExecutionException;
+
 import static android.content.Context.MODE_PRIVATE;
 
 
@@ -68,10 +70,39 @@ public class UserProfileFragement extends Fragment {
         else
             userGender.setText("أنثى");
 
+        if(currentUser.getJobId().equals("1"))
+            userPosition.setText("الوظيفة: مدير المزرعة");
+        else
+            userPosition.setText("الوظيفة: مزارع");
 
 
-        userName.setText(currentUser.getName());
-        userName.setText(currentUser.getName());
+        Farm farm =getFarm();
+        userFarm.setText("المزرعة"+farm.getFarmName());
+    }
+
+    Farm getFarm ()
+    {
+        SharedPreferences prefs = getContext().getSharedPreferences("Login session", MODE_PRIVATE);
+        String user = prefs.getString("Current User",null);
+
+        Gson gson = new Gson();
+        User currentUser = gson.fromJson(user, User.class) ;
+
+        String url = "getUserFarm?farmId="+ currentUser.getFarmId();
+        HttpGet httpGet = new HttpGet();
+
+        String farm = new String();
+
+        try {
+           farm = httpGet.execute(url).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        Farm userFarm = gson.fromJson(farm,Farm.class);
+        return userFarm;
     }
 
 

@@ -80,7 +80,7 @@ public class FarmProfileFragement extends Fragment {
     {
         String farmId = getFarmId();
 
-        String url = "http://192.168.1.4:8088/CowMonitorAPI/rest/WebService/getUserFarm?farmId="+farmId;
+        String url = "getUserFarm?farmId="+farmId;
         HttpGet httpGet = new HttpGet();
         String farm = new String();
 
