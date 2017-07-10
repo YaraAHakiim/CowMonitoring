@@ -101,9 +101,42 @@ public class FarmProfileFragement extends Fragment {
         Farm farm  = getFarm();
         farmName.setText("مزرعة "+farm.getFarmName());
         farmAddress.setText(farm.getFarmAddress());
+        User user = getManager();
 
-        HttpGet httpGet = new HttpGet();
-        //TODO complete info
-        //String url = ""
+        farmManager.setText(user.getName());
+        managerPhone.setText(user.getPhoneNumber());
+    }
+
+    User getManager()
+    {
+        Gson gson = new Gson();
+
+        SharedPreferences prefs = getContext().getSharedPreferences("Login session", MODE_PRIVATE);
+        String user = prefs.getString("Current User",null);
+
+        User currentUser = gson.fromJson(user,User.class);
+
+        if(currentUser.getJobId().equals("1"))
+        {
+            return currentUser ;
+        }
+        else
+        {
+            HttpGet httpGet = new HttpGet();
+            String url = "getFarmManager?farmId=" + currentUser.getFarmId() + "&role=1";
+            try {
+                user = httpGet.execute(url).get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+
+            currentUser = gson.fromJson(user,User.class);
+            return currentUser ;
+        }
+
+
+
     }
 }

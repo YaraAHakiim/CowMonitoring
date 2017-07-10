@@ -26,7 +26,7 @@ public class HttpGet extends AsyncTask <String , String , String>  {
     @Override
     protected String doInBackground(String... params) {
 
-        String urlString = "http://192.168.93.73:8088/CowMonitorAPI/rest/WebService/" + params[0] ;
+        String urlString = "http://192.168.1.4:8088/CowMonitorAPI/rest/WebService/" + params[0] ;
         String result = "" ;
         String line ;
         HttpURLConnection urlConnection = null;

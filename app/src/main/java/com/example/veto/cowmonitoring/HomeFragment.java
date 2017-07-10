@@ -1,4 +1,4 @@
-package layout;
+package com.example.veto.cowmonitoring;
 
 import android.content.Context;
 import android.net.Uri;
