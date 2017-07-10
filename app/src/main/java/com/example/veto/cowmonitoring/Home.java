@@ -111,6 +111,14 @@ public class Home extends AppCompatActivity
         else if (id == R.id.nav_monitor)
         {
 
+            MonitorFragment monitorFragment = new MonitorFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.homeLayout,
+                    monitorFragment ,
+                    monitorFragment.getTag())
+                    .commit();
+            getSupportActionBar().setTitle("مراقبة");
+
 
         }
 

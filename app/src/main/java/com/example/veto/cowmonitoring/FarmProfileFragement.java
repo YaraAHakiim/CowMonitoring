@@ -26,7 +26,6 @@ public class FarmProfileFragement extends Fragment {
     View rootView ;
     TextView farmName;
     TextView farmAddress;
-    TextView farmPhone;
     TextView farmManager;
     TextView managerPhone;
 
@@ -53,7 +52,6 @@ public class FarmProfileFragement extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_farmprofile, container, false);
         farmName = (TextView) rootView.findViewById(R.id.textFarmName);
         farmAddress = (TextView) rootView.findViewById(R.id.textFarmAddress);
-        farmPhone = (TextView) rootView.findViewById(R.id.textFarmPhone);
         farmManager = (TextView) rootView.findViewById(R.id.textFarmManager);
         managerPhone= (TextView) rootView.findViewById(R.id.textManagerPhone);
     }
