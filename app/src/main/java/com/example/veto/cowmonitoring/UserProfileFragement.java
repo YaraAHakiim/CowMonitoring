@@ -65,7 +65,7 @@ public class UserProfileFragement extends Fragment {
         userEmail.setText(currentUser.getEmail());
         userPhone.setText(currentUser.getPhoneNumber());
 
-        if(currentUser.getGenderId().equals("Male"))
+        if(currentUser.getGenderId().equals("MALE") || currentUser.getGenderId().equals("Male"))
             userGender.setText("ذكر");
         else
             userGender.setText("أنثى");
@@ -77,7 +77,8 @@ public class UserProfileFragement extends Fragment {
 
 
         Farm farm =getFarm();
-        userFarm.setText("المزرعة"+farm.getFarmName());
+        userFarm.setText("المزرعة: "+farm.getFarmName());
+
     }
 
     Farm getFarm ()

@@ -106,7 +106,7 @@ public class TempreatureFragment extends Fragment {
                 ,ContextCompat.getColor(getContext() ,R.color.red),
                 ContextCompat.getColor(getContext(),R.color.green)});
 
-        chart.animateY(5000);
+        chart.animateY(4000);
         chart.setDescription("");
     }
 

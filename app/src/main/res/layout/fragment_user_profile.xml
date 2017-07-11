@@ -189,11 +189,9 @@
         </LinearLayout>
 
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-
             <Button
                 android:id="@+id/button3"
                 android:layout_width="100dp"
@@ -205,7 +203,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold|italic"/>
 
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

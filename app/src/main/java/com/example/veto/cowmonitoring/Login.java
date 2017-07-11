@@ -100,6 +100,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             e.printStackTrace();
         }
 
+        Log.d("res", result);
+
         return result;
     }
 
