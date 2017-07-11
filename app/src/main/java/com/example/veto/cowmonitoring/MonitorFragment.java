@@ -103,7 +103,7 @@ public class MonitorFragment extends Fragment {
         }
 
         nodes = gson.fromJson(nodesString,new TypeToken<ArrayList<String>>(){}.getType());
-        Log.d("node" , nodes.get(0));
+
         return nodes;
     }
 

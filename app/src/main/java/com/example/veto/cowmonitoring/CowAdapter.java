@@ -48,9 +48,7 @@ public class CowAdapter extends RecyclerView.Adapter<CowAdapter.MyViewHolder> {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(context,"clicked",Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(context,Node.class);
+                Intent intent = new Intent(context,NodeTabbed.class);
                 intent.putExtra("nodeKey", dataSet.get(position));
                 context.startActivity(intent);
 
