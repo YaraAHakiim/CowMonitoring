@@ -1,6 +1,7 @@
 package com.example.veto.cowmonitoring;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -75,6 +76,19 @@ public class NodeTabbed extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        else if (id == R.id.action_logout)
+        {
+            SharedPreferences sharedPreferences = getSharedPreferences("Login session" , MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+            editor.clear();
+            editor.commit();
+
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

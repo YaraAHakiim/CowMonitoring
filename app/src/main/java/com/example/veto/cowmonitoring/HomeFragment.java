@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +47,7 @@ public class HomeFragment extends Fragment {
         initializeViews(inflater,container);
 
 
-        ArrayList<Entry> entries = new ArrayList<>();
+        /*ArrayList<Entry> entries = new ArrayList<>();
         entries.add(new Entry(4f, 0));
         entries.add(new Entry(8f, 1));
         entries.add(new Entry(6f, 2));
@@ -69,7 +71,9 @@ public class HomeFragment extends Fragment {
         pieChart.setData(data);
         pieChart.setHoleRadius(0);
 
-        pieChart.animateY(5000);
+        pieChart.animateY(5000);*/
+
+        prepareChart();
 
 
         return rootView;
@@ -120,6 +124,59 @@ public class HomeFragment extends Fragment {
 
         Farm userFarm = gson.fromJson(farm,Farm.class);
         return userFarm;
+    }
+
+    Status getStatus ()
+    {
+        String url = "getStatus?id=1";
+        String statusString = "";
+
+        HttpGet httpGet = new HttpGet();
+        try {
+            statusString = httpGet.execute(url).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
+        Gson gson = new Gson();
+
+        Status status = gson.fromJson(statusString, Status.class);
+
+        Log.d("status", statusString);
+
+        return status;
+    }
+
+    void prepareChart()
+    {
+        Status status = getStatus();
+        ArrayList<Entry> entries = new ArrayList<>();
+
+
+        //if(status != null) {
+            entries.add(new Entry(Float.parseFloat(status.getNormal()), 0));
+            entries.add(new Entry(Float.parseFloat(status.getAbNormal()), 1));
+
+            PieDataSet dataset = new PieDataSet(entries, "حالة الحيوان");
+
+            ArrayList<String> labels = new ArrayList<String>();
+            labels.add("سليم");
+            labels.add("مريض");
+
+            PieData data = new PieData(labels, dataset);
+            dataset.setColors(new int[
+                    ]{ContextCompat.getColor(getContext() ,R.color.green)
+                    ,ContextCompat.getColor(getContext() ,R.color.red)});
+            pieChart.setDescription("");
+            pieChart.setData(data);
+            pieChart.setHoleRadius(0);
+
+            pieChart.animateY(5000);
+        //}
+
     }
 
 }

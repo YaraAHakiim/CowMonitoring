@@ -80,29 +80,32 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     String login() {
 
-        validate();
+        if (validate()) {
 
-        String email = editTextEmail.getText().toString();
-        String password = editTextPassword.getText().toString();
-        String result = null ;
+            String email = editTextEmail.getText().toString();
+            String password = editTextPassword.getText().toString();
+            String result = null;
 
 
+            String url = "checkLogin?email=" +
+                    email + "&password=" + password;
+            HttpGet httpGet = new HttpGet();
 
-        String url = "checkLogin?email="+
-                email+"&password="+password ;
-        HttpGet httpGet = new HttpGet();
+            try {
+                result = httpGet.execute(url).get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
 
-        try {
-            result = httpGet.execute(url).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.d("res", result);
+
+            return result;
         }
 
-        Log.d("res", result);
+        return null;
 
-        return result;
     }
 
     void createUserSession(String result)
@@ -119,7 +122,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         String currentUser = login();
 
-        if(currentUser.equals("{}"))
+        if(currentUser == null || currentUser.equals("{}"))
         {
             Toast.makeText(getApplicationContext(), "البريد الإليكترونى او كلمة المرور غير صحيحة", Toast.LENGTH_LONG).show();
         }
