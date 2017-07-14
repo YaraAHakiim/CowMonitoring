@@ -89,6 +89,19 @@
                 android:layout_weight="1"
                 android:src="@drawable/label_red"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Refresh"
+                android:background="@color/colorPrimaryDark"
+                android:src="@drawable/refresh"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

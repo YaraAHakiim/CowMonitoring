@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -114,6 +116,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         SharedPreferences.Editor editor = preferences.edit();
 
         editor.putString("Current User" , result);
+
+        Gson gson = new Gson();
+        User currentUser = gson.fromJson(result, User.class) ;
+
+        String url = "getUserFarm?farmId="+ currentUser.getFarmId();
+        HttpGet httpGet = new HttpGet();
+
+        String farm = new String();
+
+        try {
+            farm = httpGet.execute(url).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        Farm userFarm = gson.fromJson(farm,Farm.class);
+        editor.putString("Farm" , farm);
         editor.commit();
     }
 
@@ -122,7 +143,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         String currentUser = login();
 
-        if(currentUser == null || currentUser.equals("{}"))
+        if(currentUser == null){
+
+        }
+
+        else if(currentUser.equals("{}"))
         {
             Toast.makeText(getApplicationContext(), "البريد الإليكترونى او كلمة المرور غير صحيحة", Toast.LENGTH_LONG).show();
         }

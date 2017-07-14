@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -26,12 +27,13 @@ import java.util.concurrent.ExecutionException;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TempreatureFragment extends Fragment {
+public class TempreatureFragment extends Fragment implements View.OnClickListener {
 
     View  rootView;
     BarChart chart ;
     String nodeKey;
     Intent intent;
+    ImageButton refreshButton;
 
     TextView textNodeKey ;
 
@@ -58,6 +60,8 @@ public class TempreatureFragment extends Fragment {
         //textNodeKey = (TextView) rootView.findViewById(R.id.nodeKey);
         //textNodeKey.setText(nodeKey);
         chart = (BarChart) rootView.findViewById(R.id.chart) ;
+        refreshButton = (ImageButton) rootView.findViewById(R.id.refresh);
+        refreshButton.setOnClickListener(this);
     }
 
     List<NodeData> getChartData()
@@ -110,6 +114,11 @@ public class TempreatureFragment extends Fragment {
         chart.setDescription("");
     }
 
+    @Override
+    public void onClick(View v) {
+        this.fillTempChart();
+    }
+
     public class MyBarDataSet extends BarDataSet {
 
 
@@ -128,5 +137,6 @@ public class TempreatureFragment extends Fragment {
         }
 
     }
+
 
 }

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import java.util.ArrayList;
+
 /**
  * Created by YaRa on 7/14/2017.
  */
@@ -18,12 +20,10 @@ public class NotificationsService extends Service {
         return null;
     }
 
-    class getNotifications extends HttpGet{
-
-        void doiInBackground()
+    void getTemp(ArrayList<String> nodeKeys)
         {
             HttpGet httpGet = new HttpGet();
 
         }
-    }
+
 }

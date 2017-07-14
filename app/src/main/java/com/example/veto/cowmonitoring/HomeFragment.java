@@ -62,43 +62,19 @@ public class HomeFragment extends Fragment {
 
         SharedPreferences preferences = getContext().getSharedPreferences("Login session",0);
         String user = preferences.getString("Current User", null) ;
+        String farmString = preferences.getString("Farm", null);
 
         Gson gson = new Gson();
 
         User currentUser = gson.fromJson(user,User.class);
         textUserName.setText("إسم المستخدم: "+currentUser.getName());
 
-        Farm farm = getFarm();
+        Farm farm = gson.fromJson(farmString, Farm.class);
         textFarmName.setText("إسم المزرعة: " + farm.getFarmName());
 
 
     }
-
-    Farm getFarm ()
-    {
-        SharedPreferences prefs = getContext().getSharedPreferences("Login session", MODE_PRIVATE);
-        String user = prefs.getString("Current User",null);
-
-        Gson gson = new Gson();
-        User currentUser = gson.fromJson(user, User.class) ;
-
-        String url = "getUserFarm?farmId="+ currentUser.getFarmId();
-        HttpGet httpGet = new HttpGet();
-
-        String farm = new String();
-
-        try {
-            farm = httpGet.execute(url).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        Farm userFarm = gson.fromJson(farm,Farm.class);
-        return userFarm;
-    }
-
+    
     Status getStatus ()
     {
         String url = "getStatus?id=1";
