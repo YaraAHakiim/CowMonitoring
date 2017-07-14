@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="12dip"
+            android:paddingTop="12dip"
+            android:paddingRight="12dip"
+            android:paddingLeft="12dip"
+            android:layoutDirection="rtl">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="حجم الخط"
+                android:textColor="#598B2C"
+                android:paddingRight="6dp"
+                android:paddingLeft="6dp"
+                android:id="@+id/chooseLang"
+                android:paddingBottom="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#598B2C"
+                android:paddingBottom="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="صغير"
+                android:onClick="smallFontChosen"
+                android:paddingTop="10dip"
+                android:paddingRight="6dp"
+                android:paddingLeft="6dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="كبير"
+                android:textSize="20dip"
+                android:onClick="largeFontChosen"
+                android:paddingTop="10dip"
+                android:paddingRight="6dp"
+                android:paddingLeft="6dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

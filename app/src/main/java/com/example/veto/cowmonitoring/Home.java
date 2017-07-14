@@ -149,13 +149,17 @@ public class Home extends AppCompatActivity
         }
         else if (id == R.id.nav_settings)
         {
-
-
+            Intent intent = new Intent(this, SettingsActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
         }
         else if (id == R.id.nav_contactUS)
         {
 
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

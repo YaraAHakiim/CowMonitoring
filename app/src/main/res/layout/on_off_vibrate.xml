@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="12dip"
+            android:paddingTop="12dip"
+            android:paddingRight="12dip"
+            android:paddingLeft="12dip"
+            android:layoutDirection="rtl">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#598B2C"
+                android:paddingRight="6dp"
+                android:paddingLeft="6dp"
+                android:id="@+id/label"
+                android:paddingBottom="10dp"
+                android:text="الاهتزاز"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#598B2C"
+                android:paddingBottom="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="تشغيل"
+                android:onClick="vibrateOn"
+                android:paddingTop="15dip"
+                android:paddingRight="6dp"
+                android:paddingLeft="6dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="إيقاف"
+                android:onClick="vibrateOff"
+                android:paddingTop="15dip"
+                android:paddingRight="6dp"
+                android:paddingLeft="6dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

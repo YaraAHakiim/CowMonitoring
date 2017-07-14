@@ -46,33 +46,6 @@ public class HomeFragment extends Fragment {
 
         initializeViews(inflater,container);
 
-
-        /*ArrayList<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(4f, 0));
-        entries.add(new Entry(8f, 1));
-        entries.add(new Entry(6f, 2));
-        entries.add(new Entry(12f, 3));
-        entries.add(new Entry(18f, 4));
-        entries.add(new Entry(9f, 5));
-
-        PieDataSet dataset = new PieDataSet(entries, "# of Calls");
-
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("January");
-        labels.add("February");
-        labels.add("March");
-        labels.add("April");
-        labels.add("May");
-        labels.add("June");
-
-        PieData data = new PieData(labels, dataset);
-        dataset.setColors(ColorTemplate.PASTEL_COLORS);
-        pieChart.setDescription("Description");
-        pieChart.setData(data);
-        pieChart.setHoleRadius(0);
-
-        pieChart.animateY(5000);*/
-
         prepareChart();
 
 

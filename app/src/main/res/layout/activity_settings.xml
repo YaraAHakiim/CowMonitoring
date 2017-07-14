@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="495dp"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="12dip"
+            android:paddingTop="12dip"
+            android:paddingRight="12dip"
+            android:paddingLeft="12dip"
+            android:layoutDirection="rtl"
+            android:id="@+id/layout_setting">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                android:text="حجم الخط"
+                android:paddingBottom="6dip"
+                android:textStyle="bold"
+                android:id="@+id/txtView_change_font"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                android:onClick="chooseFont"
+                android:text="صغير"
+                android:id="@+id/txtView_font_selected"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#E2EADC"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dip"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                android:text="الإشعارات"
+                android:paddingBottom="6dip"
+                android:textStyle="bold"
+                android:id="@+id/txtView_notif"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                android:onClick="chooseNotif"
+                android:text="تشغيل"
+                android:id="@+id/txtView_notif_state"/>
+
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#E2EADC"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dip"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="اهتزاز"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                android:textStyle="bold"
+                android:paddingBottom="6dip"
+                android:id="@+id/txtView_vibrate"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                android:onClick="chooseVibrate"
+                android:text="تشغيل"
+                android:id="@+id/txtView_vibrate_state"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#E2EADC"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dip"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="النغمة"
+                android:textStyle="bold"
+                android:paddingBottom="6dip"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                android:id="@+id/txtView_tone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                android:onClick="chooseTone"
+                android:text="تشغيل"
+                android:id="@+id/txtView_tone_state"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
