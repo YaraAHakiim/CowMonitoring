@@ -148,7 +148,7 @@ public class NodeTabbed extends AppCompatActivity {
                     TempreatureFragment tab1 = new TempreatureFragment();
                     return tab1;
                 case 1:
-                    TempreatureFragment tab2 = new TempreatureFragment();
+                    SoundFragment tab2 = new SoundFragment();
                     return tab2;
             }
             return null;

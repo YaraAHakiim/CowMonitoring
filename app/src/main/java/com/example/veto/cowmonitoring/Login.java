@@ -64,13 +64,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         boolean isValid = true;
 
         if (email.isEmpty()) {
-            editTextEmail.setError("إدخل البريد الإليكترونى");
-            isValid = false;
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("البريد الإليكترونى غير صحيح");
+            editTextEmail.setError("إدخل إسم المستخدم");
             isValid = false;
         }
-
         if (password.isEmpty())
         {
             editTextPassword.setError("إدخل كلمة المرور");
@@ -89,7 +85,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             String result = null;
 
 
-            String url = "checkLogin?email=" +
+            String url = "checkLogin?userName=" +
                     email + "&password=" + password;
             HttpGet httpGet = new HttpGet();
 
@@ -149,7 +145,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         else if(currentUser.equals("{}"))
         {
-            Toast.makeText(getApplicationContext(), "البريد الإليكترونى او كلمة المرور غير صحيحة", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "خطأ فى إسم المستخدم  او كلمة المرور", Toast.LENGTH_LONG).show();
         }
         else {
 

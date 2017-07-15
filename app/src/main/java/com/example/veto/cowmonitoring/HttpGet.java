@@ -1,5 +1,7 @@
 package com.example.veto.cowmonitoring;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 
 import org.json.JSONObject;
@@ -22,6 +24,8 @@ public class HttpGet extends AsyncTask <String , String , String>  {
     public static final String REQUEST_METHOD = "GET";
     public static final int READ_TIMEOUT = 15000;
     public static final int CONNECTION_TIMEOUT = 15000;
+
+    AlertDialog alertDialog ;
 
     @Override
      protected String doInBackground(String... params) {
@@ -78,13 +82,12 @@ public class HttpGet extends AsyncTask <String , String , String>  {
 
         }
 
-
-
         return result;
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+
     }
 }

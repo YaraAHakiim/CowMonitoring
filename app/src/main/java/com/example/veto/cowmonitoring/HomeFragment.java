@@ -1,5 +1,6 @@
 package com.example.veto.cowmonitoring;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -7,9 +8,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.veto.cowmonitoring.R;
@@ -23,15 +27,20 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
 
 public class HomeFragment extends Fragment {
 
     View rootView;
-    TextView textUserName ;
-    TextView textFarmName ;
-    PieChart pieChart ;
+    TextView textUserName;
+    TextView textFarmName;
+    PieChart pieChart;
+    Context context;
+    Activity activity;
+    PopupWindow popupWindow;
+    LinearLayout linearLayout;
 
 
 
@@ -72,9 +81,14 @@ public class HomeFragment extends Fragment {
         Farm farm = gson.fromJson(farmString, Farm.class);
         textFarmName.setText("إسم المزرعة: " + farm.getFarmName());
 
+        context = getContext();
+        activity = getActivity() ;
+
+        linearLayout = (LinearLayout) rootView.findViewById(R.id.linear);
+
 
     }
-    
+
     Status getStatus ()
     {
         String url = "getStatus?id=1";
@@ -105,7 +119,7 @@ public class HomeFragment extends Fragment {
         ArrayList<Entry> entries = new ArrayList<>();
 
 
-        //if(status != null) {
+        if(status != null ) {
             entries.add(new Entry(Float.parseFloat(status.getNormal()), 0));
             entries.add(new Entry(Float.parseFloat(status.getAbNormal()), 1));
 
@@ -124,7 +138,20 @@ public class HomeFragment extends Fragment {
             pieChart.setHoleRadius(0);
 
             pieChart.animateY(5000);
-        //}
+        }
+        else
+        {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+
+            // Inflate the custom layout/view
+            View customView = inflater.inflate(R.layout.popup_view,null);
+            popupWindow = new PopupWindow(
+                    customView,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+            popupWindow.showAtLocation(linearLayout, Gravity.CENTER,0,0);
+        }
 
     }
 
