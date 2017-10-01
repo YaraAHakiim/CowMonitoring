@@ -24,6 +24,8 @@ public class Home extends AppCompatActivity
         setSupportActionBar(toolbar);
         HomeFragment homeFragment = new HomeFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+
         fragmentManager.beginTransaction().replace(R.id.homeLayout,
                 homeFragment ,
                 homeFragment.getTag())
@@ -149,8 +151,8 @@ public class Home extends AppCompatActivity
         }
         else if (id == R.id.nav_settings)
         {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
+            /*Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);*/
         }
         else if (id == R.id.nav_contactUS)
         {

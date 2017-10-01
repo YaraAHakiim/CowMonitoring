@@ -74,13 +74,13 @@ public class NodeTabbed extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
 
             startActivity(intent);
-        }
+        }*/
 
-        else if (id == R.id.action_logout)
+        if (id == R.id.action_logout)
         {
             SharedPreferences sharedPreferences = getSharedPreferences("Login session" , MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
