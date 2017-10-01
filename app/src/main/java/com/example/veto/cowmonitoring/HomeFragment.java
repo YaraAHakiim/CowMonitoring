@@ -119,9 +119,8 @@ public class HomeFragment extends Fragment {
         ArrayList<Entry> entries = new ArrayList<>();
 
 
-        if(status != null ) {
-            entries.add(new Entry(Float.parseFloat(status.getNormal()), 0));
-            entries.add(new Entry(Float.parseFloat(status.getAbNormal()), 1));
+         entries.add(new Entry(Float.parseFloat(status.getNormal()), 0));
+         entries.add(new Entry(Float.parseFloat(status.getAbNormal()), 1));
 
             PieDataSet dataset = new PieDataSet(entries, "حالة الحيوان");
 
@@ -138,20 +137,8 @@ public class HomeFragment extends Fragment {
             pieChart.setHoleRadius(0);
 
             pieChart.animateY(5000);
-        }
-        else
-        {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
 
-            // Inflate the custom layout/view
-            View customView = inflater.inflate(R.layout.popup_view,null);
-            popupWindow = new PopupWindow(
-                    customView,
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-            );
-            popupWindow.showAtLocation(linearLayout, Gravity.CENTER,0,0);
-        }
+
 
     }
 

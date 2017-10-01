@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,9 +96,15 @@ public class TempreatureFragment extends Fragment implements View.OnClickListene
         ArrayList<BarEntry> entries= new ArrayList<>();
         ArrayList<String> labels = new ArrayList<>();
 
+        Log.d("data2", data.get(0).getTempData());
+
         for (int i = 0 ; i < data.size() ; i++)
         {
-            entries.add(new BarEntry(Float.parseFloat(data.get(i).getTempData()),i));
+            //Log.d("data3", data.get(i).getTempData());
+            float datafloat = Float.parseFloat(data.get(i).getTempData());
+
+            Log.d("float", Float.toString(datafloat) );
+            entries.add(new BarEntry(datafloat,i));
             labels.add(data.get(i).getTime());
         }
 
